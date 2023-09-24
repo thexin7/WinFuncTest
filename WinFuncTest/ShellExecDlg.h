@@ -37,4 +37,5 @@ public:
 	BOOL m_bDir;
 
 	afx_msg void OnBnClickedButtonShellexew();
+	int m_nShow;
 };

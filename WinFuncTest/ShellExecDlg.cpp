@@ -21,6 +21,7 @@ CShellExecDlg::CShellExecDlg(CWnd* pParent /*=nullptr*/)
 	, m_bParam(FALSE)
 	, m_bVerb(FALSE)
 	, m_bDir(FALSE)
+	, m_nShow(0)
 {
 #ifndef _WIN32_WCE
 	EnableActiveAccessibility();
@@ -45,6 +46,7 @@ void CShellExecDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK_PARAM, m_bParam);
 	DDX_Check(pDX, IDC_CHECK_VERB, m_bVerb);
 	DDX_Check(pDX, IDC_CHECK_DIR, m_bDir);
+	DDX_Text(pDX, IDC_EDIT_SHOW, m_nShow);
 }
 
 
@@ -76,9 +78,10 @@ void CShellExecDlg::OnBnClickedButtonShellexew()
 	{
 		info.lpDirectory = m_strDir;
 	}
+	info.nShow = m_nShow;
 
 	m_nReturnCode = ShellExecuteExW(&info);
 	m_nErrorCode = GetLastError();
-	MessageBoxW(info.lpFile);
+
 	UpdateData(FALSE);
 }
