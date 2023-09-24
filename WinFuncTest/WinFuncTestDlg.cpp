@@ -8,6 +8,7 @@
 #include "WinFuncTestDlg.h"
 #include "afxdialogex.h"
 #include "ShellExecDlg.h"
+#include "FileTestDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -67,6 +68,7 @@ BEGIN_MESSAGE_MAP(CWinFuncTestDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_SHELLEXEC, &CWinFuncTestDlg::OnBnClickedButtonShellexec)
+	ON_BN_CLICKED(IDC_BUTTON_FILE, &CWinFuncTestDlg::OnBnClickedButtonFile)
 END_MESSAGE_MAP()
 
 
@@ -160,5 +162,12 @@ HCURSOR CWinFuncTestDlg::OnQueryDragIcon()
 void CWinFuncTestDlg::OnBnClickedButtonShellexec()
 {
 	CShellExecDlg dlg;
+	dlg.DoModal();
+}
+
+
+void CWinFuncTestDlg::OnBnClickedButtonFile()
+{
+	CFileTestDlg dlg;
 	dlg.DoModal();
 }
